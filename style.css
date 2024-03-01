@@ -1,0 +1,34 @@
+#card {
+    width: 300px;
+    height: 180px;
+    margin: auto;
+    background-color: #B4B4B8;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+#logo{
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    
+}
+
+#menu a{
+    margin-top: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: list-item;
+    padding: 10px;
+    
+}
+#menu a:hover{
+    background-color: rgb(71, 71, 70);
+    transition: 0.5s;
+    
+    
+}
+.b-main{
+    background-color: #F5F5F5;
+}
