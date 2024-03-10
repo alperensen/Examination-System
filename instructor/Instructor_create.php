@@ -1,53 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Exam Creation</title>
-        <link href="css/mystyle.css" rel="stylesheet" />
-        <link rel="icon" type="image/x-icon" href="assets/Akdeniz_university_logo.png" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
+<?php $page_name = "Exam Creation"; ?>
+<?php include 'layout/ins_header.php'; ?>
+
         <div class="d-flex main-content" id="wrapper">
             <!-- Sidebar-->
-            <div class="bg-dark" id="sidebar-wrapper">
-                <div class="sidebar-heading bg-dark text-white ps-3">Exam System</div>
-                <div class="list-group list-group-flush">
-                    <img id="logo" src="assets/Akdeniz_university_logo.png" style="margin-left: auto;margin-right: auto;display: block;margin-top: 10px;" alt="logo" width="96px" height="96px">
-                    <br>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Instructor_home.html"><i class="fa-solid fa-house" style="margin-right: 0.5rem;"></i>Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Instructor_courses.html"><i class="fa-solid fa-book" style="margin-right: 0.5rem;"></i>My Courses</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Instructor_create.html"><i class="fa-solid fa-plus" style="margin-right: 0.5rem;"></i>Exam Creation</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i class="fa-solid fa-message" style="margin-right: 0.5rem;"></i>Contact</a> 
-                </div>
-            </div>
+            <?php include 'layout/ins_sidebar.php'; ?>
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <div class="container-fluid">
-                        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!" style="color: gray;"><i class="fas fa-bars"></i></button>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Prof.Dr. Melih Günay</a>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        
-                                        <a class="dropdown-item" href="#!"><i class="fa fa-user" aria-hidden="true" style="margin-right: 0.5rem;"></i>Profile</a>
-                                        
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#!"><i class="fas fa-sign-out-alt" style="margin-right: 0.5rem;"></i>Logout</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                <?php include 'layout/ins_navbar.php'; ?>
                 <!-- Page content-->
                 <div class="container-fluid">
                     <span class="baslik">EXAM CREATION</span>
@@ -182,62 +142,4 @@
                 </div>
             </div>
         </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <script>
-            function soruEkle() {
-                var soruSayisi = document.querySelectorAll('.soru').length + 2;
-    
-                var yeniSoruDiv = document.createElement('div');
-                yeniSoruDiv.className = 'soru mb-3';
-                yeniSoruDiv.innerHTML = `
-                    <label for="soru${soruSayisi}" class="form-label">Question ${soruSayisi}:</label>
-                    <input type="text" class="form-control soruMetni" id="soru${soruSayisi}" required>
-                    <label class="form-check-label">Answers:</label>
-                    <div class="form-check">
-                        <input class="form-check-input rad-style" type="radio" name="secenek${soruSayisi}" id="answer${soruSayisi}A" value="A">
-                        <label class="form-check-label" for="answer${soruSayisi}A">A</label>
-                        <input type="text" class="form-control secenekMetni" id="answer${soruSayisi}AText" placeholder="Answer A" required>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input rad-style" type="radio" name="secenek${soruSayisi}" id="answer${soruSayisi}B" value="B">
-                        <label class="form-check-label" for="answer${soruSayisi}B">B</label>
-                        <input type="text" class="form-control secenekMetni" id="answer${soruSayisi}BText" placeholder="Answer B" required>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input rad-style" type="radio" name="secenek${soruSayisi}" id="answer${soruSayisi}C" value="C">
-                        <label class="form-check-label" for="answer${soruSayisi}C">C</label>
-                        <input type="text" class="form-control secenekMetni" id="answer${soruSayisi}CText" placeholder="Answer C" required>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input rad-style" type="radio" name="secenek${soruSayisi}" id="answer${soruSayisi}D" value="D">
-                        <label class="form-check-label" for="answer${soruSayisi}D">D</label>
-                        <input type="text" class="form-control secenekMetni" id="answer${soruSayisi}DText" placeholder="Answer D" required>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input rad-style" type="radio" name="secenek${soruSayisi}" id="answer${soruSayisi}E" value="E">
-                        <label class="form-check-label" for="answer${soruSayisi}E">E</label>
-                        <input type="text" class="form-control secenekMetni" id="answer${soruSayisi}EText" placeholder="Answer E" required>
-                    </div>
-                `;
-    
-                document.getElementById('addExamModal').querySelector('.modal-body').appendChild(yeniSoruDiv);
-            }
-            function sorulariTemizle() {
-            document.querySelectorAll(".examForm").forEach(form => form.reset())
-            document.querySelectorAll(".soru").forEach(soruDiv => soruDiv.remove())
-            }
-
-            function sonSoruyuSil() {
-                document.querySelector(".soru").parentNode.lastChild.remove()
-            }
-    
-    
-    
-    
-            
-        </script>
-    </body>
-</html>
+<?php include 'layout/ins_footer.php'; ?>

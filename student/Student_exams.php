@@ -1,53 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Exams</title>
-        <link href="css/mystyle.css" rel="stylesheet" />
-        <link rel="icon" type="image/x-icon" href="assets/Akdeniz_university_logo.png" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-<body>
+<?php $page_name = "Exams"; ?>
+<?php include 'layout/st_header.php'; ?>
+
     <div class="d-flex main-content" id="wrapper">
         <!-- Sidebar-->
-        <div class="bg-dark" id="sidebar-wrapper">
-            <div class="sidebar-heading bg-dark text-white ps-3">Exam System</div>
-            <div class="list-group list-group-flush">
-                <img id="logo" src="assets/Akdeniz_university_logo.png" style="margin-left: auto;margin-right: auto;display: block;margin-top: 10px;" alt="logo" width="96px" height="96px">
-                <br>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Student_home.html"><i class="fa-solid fa-house" style="margin-right: 0.5rem;"></i>Dashboard</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Student_courses.html"><i class="fa-solid fa-book" style="margin-right: 0.5rem;"></i>My Courses</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Student_exams.html"><i class="fa-solid fa-pen" style="margin-right: 0.5rem;"></i></i>My Exams</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Student_contact.html"><i class="fa-solid fa-message" style="margin-right: 0.5rem;"></i>Contact</a> 
-            </div>
-        </div>
+        <?php include 'layout/st_sidebar.php'; ?>
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
             <!-- Top navigation-->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container-fluid">
-                    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!" style="color: gray;"><i class="fas fa-bars"></i></button>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ogr.Utku Alperen ŞEN</a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    
-                                    <a class="dropdown-item" href="#!"><i class="fa fa-user" aria-hidden="true" style="margin-right: 0.5rem;"></i>Profile</a>
-                                    
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#!"><i class="fas fa-sign-out-alt" style="margin-right: 0.5rem;"></i>Logout</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            <?php include 'layout/st_navbar.php'; ?>
             <!-- Page content-->
             <div class="container-fluid">
                 <span class="baslik">EXAMS</span>
@@ -124,11 +84,4 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-    
-</body>
-</html>
+<?php include 'layout/st_footer.php'; ?>
