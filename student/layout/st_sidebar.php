@@ -5,7 +5,7 @@
         <br>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Student_home.php"><i class="fa-solid fa-house" style="margin-right: 0.5rem;"></i>Dashboard</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Student_courses.php"><i class="fa-solid fa-book" style="margin-right: 0.5rem;"></i>My Courses</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Student_exams.php"><i class="fa-solid fa-pen" style="margin-right: 0.5rem;"></i></i>My Exams</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Student_exams.php"><i class="fa-solid fa-pen" style="margin-right: 0.5rem;"></i>My Exams</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Student_contact.php"><i class="fa-solid fa-message" style="margin-right: 0.5rem;"></i>Contact</a> 
     </div>
 </div>
