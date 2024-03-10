@@ -12,7 +12,7 @@
                 <div class="container-fluid">
                     <span class="baslik">EXAM CREATION</span>
                     <br><br>    
-                    <div class="table-responsive-md add-exam-buttons">
+                    <div class="table-responsive-md">
                         <table class="table table-striped table-hover" style="max-width: 90%;margin-left: 5%;">
                             <thead class="table-dark">
                             <tr>

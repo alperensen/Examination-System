@@ -1962,6 +1962,7 @@ progress {
 }
 .form-label {
   margin-bottom: 0.5rem;
+  
 }
 
 .col-form-label {
@@ -10861,12 +10862,4 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     margin-left: -15rem;
   }
-}
-.card-design {
-    
-    
-  background-color: red;
-  
-  
-  
 }

@@ -1,3 +1,19 @@
+<?php 
+  session_start();
+
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $db_name = "exam_system";
+  $conn = mysqli_connect($servername,$username,$password,$db_name);
+  if (!$conn) {
+    die("Could not connect to database: " . mysqli_connect_error());
+  }
+  
+  
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
