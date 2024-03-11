@@ -5,7 +5,18 @@
         <br>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Instructor_home.php"><i class="fa-solid fa-house" style="margin-right: 0.5rem;"></i>Dashboard</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Instructor_courses.php"><i class="fa-solid fa-book" style="margin-right: 0.5rem;"></i>My Courses</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Instructor_create.php"><i class="fa-solid fa-plus" style="margin-right: 0.5rem;"></i>Exam Creation</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i class="fa-solid fa-message" style="margin-right: 0.5rem;"></i>Contact</a> 
+        <a class="list-group-item list-group-item-action list-group-item-light p-3 collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+            <i class="fa-solid fa-pencil"></i>
+            Exams
+            <i class="fas fa-angle-down" style="padding-left: 7rem;"></i>
+        </a>
+        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+            <nav class="sb-sidenav-menu-nested nav">
+                <a class="list-group-item list-group-item-action list-group-item-light" href="Instructor_create.php" style="padding-left: 2rem;"><i class="fa-solid fa-plus" style="margin-right: 0.5rem;"></i>New Exam</a>
+                <a class="list-group-item list-group-item-action list-group-item-light" href="Instructor_exam.php" style="padding-left: 2rem;"><i class="fa-solid fa-list" style="margin-right: 0.5rem;"></i>Exam Lists</a>
+            </nav>
+        </div>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i class="fa-solid fa-message" style="margin-right: 0.5rem;"></i>Contact</a>
+        
     </div>
 </div>
