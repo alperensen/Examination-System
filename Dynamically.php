@@ -7,6 +7,30 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
   <body>
+  <h4>With JSON TABLE</h4>
+    <?php 
+    $course_json = '[{"ID":"1", "code":"CSE333","Name":"Algorithm","numOfStudents":"120", "numOfExams":"5"},
+    {"ID":"2", "code":"CSE236","Name":"Web Programming","numOfStudents":"99", "numOfExams":"5"}]';
+    
+    $result_json = json_decode($course_json);
+    
+
+        echo '<table>';
+        foreach($result_json as $result){
+            echo '<tr>';
+                echo '<td>'.$result->ID.'</td>';
+                echo '<td>'.$result->code.'</td>';
+                echo '<td>'.$result->Name.'</td>';
+                echo '<td>'.$result->numOfStudents.'</td>';
+                echo '<td>'.$result->numOfExams.'</td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+
+    
+    
+    ?>
+    <br>
     <h5>Dynamically populate a table</h5>
     <?php
     // Define a constant array of courses
@@ -104,31 +128,7 @@
     var_dump(json_encode($jsonobj));
     ?>
     <br>
-    <h4>With JSON TABLE</h4>
-    <?php
-    $jsonobj = '{"WebProgramming":35,"Algorithm":37,"Discrete":43}';
-
     
-    $courses = json_decode($jsonobj, true);
-    ?>
-    <table class="table table-borderless bg-light shadow-lg border border-4 position-relative md-2" style="width: 80rem;">
-        <thead class="table-dark">
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Number of Students</th>
-            
-            
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($courses as $courseName => $duration): ?>
-                <tr>
-                    <td><?php echo $courseName; ?></td>
-                    <td><?php echo $duration; ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
 
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
