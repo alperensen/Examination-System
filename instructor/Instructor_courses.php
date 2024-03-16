@@ -13,12 +13,13 @@
                     <span class="baslik">MY COURSES</span>
                     <br><br>    
                     <div class="table-responsive-md">
-                        <table class="table table-striped table-hover" style="max-width: 50rem;margin-left: 2%;">
+                        <table class="table table-striped table-hover" style="max-width: 60rem;margin-left: 2%;">
                             <thead class="table-dark">
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Course Name</th>
                                 <th scope="col">Coure Code</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -30,7 +31,9 @@
                             if ($result->num_rows > 0) {
                                 
                                 while ($row = $result->fetch_assoc()) {
-                                    echo "<tr><th>" . $var . "</th> <th>" . $row["name"] . "</th><td>" . $row["code"] . "</td></tr>";
+                                    echo "<tr><th>" . $var . "</th> <th>" . $row["name"] . "</th><td>" . $row["code"] . "</td><td><button type='button' class='btn btn-secondary' data-bs-toggle='modalMembers' data-bs-target='#showMembers'>
+                                    Members
+                                    </button></td></tr>";
                                     $var++;
                                 }
                             } else {
@@ -38,10 +41,9 @@
                             }
                             
                             ?>
-                            
-                                
                             </tbody>
                         </table>
+                    </div>
                 </div>
             </div>
         </div>

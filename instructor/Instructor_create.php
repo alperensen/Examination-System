@@ -11,59 +11,37 @@
                 <!-- Page content-->
                 <div class="container-fluid">
                     <span class="baslik">EXAM CREATION</span>
-                    <br><br>    
+                    <br><br>
                     <div class="table-responsive-md">
-                        <table class="table table-striped table-hover" style="max-width: 90%;margin-left: 5%;">
+                        <table class="table table-striped table-hover" style="max-width: 70rem;margin-left: auto;margin-right: auto;">
                             <thead class="table-dark">
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Course Names</th>
-                                <th scope="col">Exam Dates</th>
+                                <th scope="col">Code</th>
                                 <th scope="col"></th>
                                 
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <th scope="row">CSE236(Web Programming)</th>
-                                <td>03/02/2024</td>
-                                <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExamModal">
+                            <?php 
+                            $instructor_pk = $_SESSION['pk'];
+                            $var = 1;
+                            $sql = "SELECT courses.name, courses.code FROM courses WHERE courses.instructorFk = $instructor_pk";
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<tr><th>" . $var . "</th> <th>" . $row["name"] . "</th><td>" . $row["code"] . "</td><td><button type='button' class='btn btn-secondary' data-bs-toggle='modal' data-bs-target='#addExamModal'>
                                     Add Exam
-                                    </button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <th scope="row">CSE332(Software Engineering)</th>
-                                <td>03/03/2024</td>
-                                <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExamModal">
-                                    Add Exam
-                                    </button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <th scope="row">CSE204(Database Management)</th>
-                                <td>03/04/2024</td>
-                                <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExamModal">
-                                    Add Exam
-                                    </button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <th scope="row">CSE206(Computer Organization)</th>
-                                <td>03/05/2024</td>
-                                <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExamModal">
-                                    Add Exam
-                                    </button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">5</th>
-                                <th scope="row">CSE222(Discrete Mathematics II)</th>
-                                <td>03/06/2024</td>
-                                <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addExamModal">
-                                    Add Exam
-                                    </button></td>
-                            </tr>
+                                    </button></td></tr>";
+                                    $var++;
+                                }
+                            } else {
+                                echo "<tr><td colspan='2'>No courses found</td></tr>";
+                            }
+                            
+                            ?>
                             </tbody>
                         </table>
                         <div class="modal fade" id="addExamModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
