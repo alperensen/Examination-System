@@ -10,8 +10,6 @@
     die("Could not connect to database: " . mysqli_connect_error());
   }
   
-  
-
 ?>
 
 <!DOCTYPE html>

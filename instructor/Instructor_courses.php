@@ -12,173 +12,34 @@
                 <div class="container-fluid">
                     <span class="baslik">MY COURSES</span>
                     <br><br>    
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">CSE236(Web Programming)</h6>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Schedule: Monday, Wednesday, Friday</li>
-                                    <li class="list-group-item">Time: 10:00 AM - 11:30 AM</li>
-                                    
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">CSE332(Software Engineering)</h6>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Schedule: Monday, Wednesday, Friday</li>
-                                    <li class="list-group-item">Time: 10:00 AM - 11:30 AM</li>
-                                    
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">CSE204(Database Management)</h6>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Schedule: Monday, Wednesday, Friday</li>
-                                    <li class="list-group-item">Time: 10:00 AM - 11:30 AM</li>
-                                    
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">CSE206(Computer Organization)</h6>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Schedule: Monday, Wednesday, Friday</li>
-                                    <li class="list-group-item">Time: 10:00 AM - 11:30 AM</li>
-                                    
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">CSE236(Web Programming)</h6>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Schedule: Monday, Wednesday, Friday</li>
-                                    <li class="list-group-item">Time: 10:00 AM - 11:30 AM</li>
-                                    
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">CSE332(Software Engineering)</h6>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Schedule: Monday, Wednesday, Friday</li>
-                                    <li class="list-group-item">Time: 10:00 AM - 11:30 AM</li>
-                                    
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">CSE204(Database Management)</h6>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Schedule: Monday, Wednesday, Friday</li>
-                                    <li class="list-group-item">Time: 10:00 AM - 11:30 AM</li>
-                                    
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">CSE206(Computer Organization)</h6>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Schedule: Monday, Wednesday, Friday</li>
-                                    <li class="list-group-item">Time: 10:00 AM - 11:30 AM</li>
-                                    
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">CSE236(Web Programming)</h6>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Schedule: Monday, Wednesday, Friday</li>
-                                    <li class="list-group-item">Time: 10:00 AM - 11:30 AM</li>
-                                    
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">CSE332(Software Engineering)</h6>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Schedule: Monday, Wednesday, Friday</li>
-                                    <li class="list-group-item">Time: 10:00 AM - 11:30 AM</li>
-                                    
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">CSE204(Database Management)</h6>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Schedule: Monday, Wednesday, Friday</li>
-                                    <li class="list-group-item">Time: 10:00 AM - 11:30 AM</li>
-                                    
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">CSE206(Computer Organization)</h6>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Schedule: Monday, Wednesday, Friday</li>
-                                    <li class="list-group-item">Time: 10:00 AM - 11:30 AM</li>
-                                    
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="table-responsive-md">
+                        <table class="table table-striped table-hover" style="max-width: 50rem;margin-left: 2%;">
+                            <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Course Name</th>
+                                <th scope="col">Coure Code</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php 
+                            $instructor_pk = $_SESSION['pk'];
+                            $sql = "SELECT courses.name, courses.code FROM courses WHERE courses.instructorFk = $instructor_pk";
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<tr><th>" . $row["name"] . "</th><td>" . $row["code"] . "</td></tr>";
+                                }
+                            } else {
+                                echo "<tr><td colspan='2'>No courses found</td></tr>";
+                            }
+                            
+                            ?>
+                            
+                                
+                            </tbody>
+                        </table>
                 </div>
-                
-                
             </div>
         </div>
 <?php include 'layout/ins_footer.php'; ?>

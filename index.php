@@ -49,6 +49,7 @@
         $row = mysqli_fetch_assoc($result_instructors);
         $_SESSION['user_type'] = 'instructor';
         $_SESSION['name'] = $row['name'];
+        $_SESSION['pk'] = $row['pk'];
         header("Location: instructor/Instructor_home.php");
         exit();
       }
@@ -56,6 +57,7 @@
         $row = mysqli_fetch_assoc($result_students);
         $_SESSION['user_type'] = 'student';
         $_SESSION['name'] = $row['name'];
+        $_SESSION['pk'] = $row['pk'];
         header("Location: student/Student_home.php");
         exit();
       }else {
@@ -69,7 +71,7 @@
             <div class="container py-4 h-100">
               <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                  <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                  <div class="card bg-dark text-white" style="border-radius: 1.5rem;">
                     <div class="card-body p-4 text-center">
 
                       <div class="mb-md-5 mt-md-4 pb-5">
