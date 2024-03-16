@@ -16,6 +16,7 @@
                         <table class="table table-striped table-hover" style="max-width: 50rem;margin-left: 2%;">
                             <thead class="table-dark">
                             <tr>
+                                <th scope="col">#</th>
                                 <th scope="col">Course Name</th>
                                 <th scope="col">Coure Code</th>
                             </tr>
@@ -23,12 +24,14 @@
                             <tbody>
                             <?php 
                             $instructor_pk = $_SESSION['pk'];
+                            $var = 1;
                             $sql = "SELECT courses.name, courses.code FROM courses WHERE courses.instructorFk = $instructor_pk";
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                 
                                 while ($row = $result->fetch_assoc()) {
-                                    echo "<tr><th>" . $row["name"] . "</th><td>" . $row["code"] . "</td></tr>";
+                                    echo "<tr><th>" . $var . "</th> <th>" . $row["name"] . "</th><td>" . $row["code"] . "</td></tr>";
+                                    $var++;
                                 }
                             } else {
                                 echo "<tr><td colspan='2'>No courses found</td></tr>";

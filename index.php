@@ -27,7 +27,7 @@
         <link href="css/styles.css" rel="stylesheet" />
         
     </head>
-    <body>
+    <body style="background-color: gray;">
     <?php
       
       if(isset($_POST['email']) && isset($_POST['password'])){
@@ -67,47 +67,52 @@
     }
 
     ?>
-        <section class="vh-100" style="background: gray;">
-            <div class="container py-4 h-100">
-              <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                  <div class="card bg-dark text-white" style="border-radius: 1.5rem;">
-                    <div class="card-body p-4 text-center">
-
-                      <div class="mb-md-5 mt-md-4 pb-5">
-                        <img  class="mb-3" id="login_logo" src="assets/Akdeniz_university_logo.png" style="margin-left: auto;margin-right: auto;" alt="logo" width="120px" height="120px">
-        
-                        <h2 class="fw-bold mb-2">Login</h2>
-                        <p class="text-white-50 mb-5">Please enter your email and password!</p>
-                        <form action="" method="POST">
-                        <div class="mb-4">
-                          <label class="form-label" for="email">Email</label>
-                          <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="example@gmail.com" />
-                          
-                        </div>
-          
-                        <div class="mb-3">
-                          <label class="form-label" for="password">Password</label>
-                          <input type="password" name="password" id="password" class="form-control form-control-lg" />
-                          
-                        </div>
-          
-                        <p class="small mb-4 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
-          
-                        <button class="btn btn-outline-light btn-lg px-5 fw-bold" type="submit" name="submit">Login</button>
-                        </form>
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container" style="margin-top: 3rem;">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card bg-dark text-white" style="border-radius: 1.5rem;">
+                                    <div class="card-body p-4 text-center">
+                
+                                      <div class="mb-md-5 mt-md-4 pb-5">
+                                        <img  class="mb-3" id="login_logo" src="assets/Akdeniz_university_logo.png" style="margin-left: auto;margin-right: auto;" alt="logo" width="120px" height="120px">
                         
-          
-                      </div>
-          
-                      
-          
+                                        <h2 class="fw-bold mb-2">Login</h2>
+                                        <p class="text-white-50 mb-5">Please enter your email and password!</p>
+                                        <form action="" method="POST">
+                                        <div class="mb-4">
+                                          <label class="form-label" for="email">Email</label>
+                                          <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="example@gmail.com" />
+                                          
+                                        </div>
+                          
+                                        <div class="mb-3">
+                                          <label class="form-label" for="password">Password</label>
+                                          <input type="password" name="password" id="password" class="form-control form-control-lg" />
+                                          
+                                        </div>
+                          
+                                        <p class="small mb-4 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+                          
+                                        <button class="btn btn-outline-light btn-lg px-5 fw-bold" type="submit" name="submit">Login</button>
+                                        </form>
+                                        
+                          
+                                      </div>
+                          
+                                      
+                          
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                </main>
             </div>
-          </section>
+            
+        </div>
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
