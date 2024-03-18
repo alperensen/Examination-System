@@ -31,7 +31,7 @@
                             if ($result->num_rows > 0) {
                                 
                                 while ($row = $result->fetch_assoc()) {
-                                    echo "<tr><th>" . $var . "</th> <th>" . $row["name"] . "</th><td>" . $row["code"] . "</td><td><button type='button' class='btn btn-secondary' data-bs-toggle='modalMembers' data-bs-target='#showMembers'>
+                                    echo "<tr><th scope='row'>" . $var . "</th> <th scope='row'>" . $row["name"] . "</th><td>" . $row["code"] . "</td><td><button type='button' class='btn btn-secondary' data-bs-toggle='modalMembers' data-bs-target='#showMembers'>
                                     Members
                                     </button></td></tr>";
                                     $var++;
