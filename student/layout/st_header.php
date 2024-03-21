@@ -1,9 +1,9 @@
 <?php 
   session_start();
 
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
+  $servername = "";
+  $username = "alperen";
+  $password = "password";
   $db_name = "exam_system";
   $conn = mysqli_connect($servername,$username,$password,$db_name);
   if (!$conn) {

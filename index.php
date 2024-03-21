@@ -1,9 +1,9 @@
 <?php 
   session_start();
 
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
+  $servername = "";
+  $username = "alperen";
+  $password = "password";
   $db_name = "exam_system";
   $conn = mysqli_connect($servername,$username,$password,$db_name);
   if (!$conn) {
@@ -70,13 +70,13 @@
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
-                    <div class="container" style="margin-top: 3rem;">
+                    <div class="container" style="margin-top: 2rem;">
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card bg-dark text-white" style="border-radius: 1.5rem;">
                                     <div class="card-body p-4 text-center">
                 
-                                      <div class="mb-md-5 mt-md-4 pb-5">
+                                      <div class="mb-md-2 mt-md-1 pb-3">
                                         <img  class="mb-3" id="login_logo" src="assets/Akdeniz_university_logo.png" style="margin-left: auto;margin-right: auto;" alt="logo" width="120px" height="120px">
                         
                                         <h2 class="fw-bold mb-2">Login</h2>

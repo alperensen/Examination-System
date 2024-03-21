@@ -24,25 +24,41 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php 
+                            <?php
                             $instructor_pk = $_SESSION['pk'];
                             $var = 1;
-                            $sql = "SELECT courses.name, courses.code FROM courses WHERE courses.instructorFk = $instructor_pk";
+                            $sql = "SELECT courses.pk, courses.name, courses.code FROM courses WHERE courses.instructorFk = $instructor_pk";
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
-                                
+
                                 while ($row = $result->fetch_assoc()) {
-                                    echo "<tr><th scope='row'>" . $var . "</th> <th scope='row'>" . $row["name"] . "</th><td>" . $row["code"] . "</td><td><button type='button' class='btn btn-secondary' data-bs-toggle='modal' data-bs-target='#addExamModal'>
-                                    Add Exam
-                                    </button></td></tr>";
+
+                                    ?>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">
+                                                <?php echo $var ?>
+                                            </th>
+                                            <th scope="row">
+                                                <?php echo $row["name"] ?>
+                                            </th>
+                                            <td>
+                                                <?php echo $row["code"] ?>
+                                            </td>
+                                            <td><button type='button' class='btn btn-secondary' data-bs-toggle='modal'
+                                                    data-bs-target='#addExamModal'>
+                                                    Add Exam
+                                                </button></td>
+                                        </tr>
+                                    </tbody>
+                                    <?php
                                     $var++;
                                 }
                             } else {
                                 echo "<tr><td colspan='2'>No courses found</td></tr>";
                             }
-                            
+
                             ?>
-                            </tbody>
                         </table>
                         <div class="modal fade" id="addExamModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
