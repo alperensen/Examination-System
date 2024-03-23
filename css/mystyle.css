@@ -9,5 +9,27 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: xx-large;
 }
-
-
+.code-design{
+    text-decoration: none;
+    color: black;
+}
+.code-design:hover{
+    color: white;
+    
+}
+.course-details{
+    max-width: 30rem;
+    margin-left: 2%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.course-details p{
+    font-weight: bold;
+}
+.examForm{
+        max-width: 50rem;
+        margin: 0 auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+}

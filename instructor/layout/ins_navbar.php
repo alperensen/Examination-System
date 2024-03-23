@@ -16,7 +16,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="../../logout.php"><i class="fas fa-sign-out-alt" style="margin-right: 0.5rem;"></i>Logout</a>
                             </div>
-                    <?php }else {echo '<a class="nav-link" href="../../login.php">Sign in</a>';}?>
+                    <?php }else {echo '<a class="nav-link" href="../../index.php">Sign in</a>';}?>
                 </li>
             </ul>
         </div>

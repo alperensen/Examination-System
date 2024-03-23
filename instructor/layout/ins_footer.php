@@ -1,7 +1,4 @@
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="../../js/scripts.js"></script>
+        <!--
         <script>
             function soruEkle() {
                 var soruSayisi = document.querySelectorAll('.soru').length + 2;
@@ -49,11 +46,6 @@
             function sonSoruyuSil() {
                 document.querySelector(".soru").parentNode.lastChild.remove()
             }
-    
-    
-    
-    
-            
-        </script>
+            </script>-->
     </body>
 </html>
