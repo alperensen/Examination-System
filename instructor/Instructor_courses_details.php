@@ -10,6 +10,7 @@ if(isset($_GET['code'])) {
 
     $sql_exams = "SELECT exams.pk, exams.date, exams.type, exams.percentgrade FROM exams WHERE exams.courseFk = '$courses_pk'";
     $result_exams = $conn->query($sql_exams);
+    
 }
 ?>
         <div class="d-flex main-content" id="wrapper">
@@ -31,7 +32,7 @@ if(isset($_GET['code'])) {
                     </div>
                     <br>
                     <span class="baslik">LIST OF EXAMS</span>
-                    <div class="table-responsive-md" style="max-width: 40rem;margin-left: 2%;margin-top: 2rem;">
+                    <div class="table-responsive-md" style="max-width: 50rem;margin-left: 2%;margin-top: 2rem;">
                         <table class="table table-striped">
                             <thead class="table-dark">
                             <tr>
@@ -39,6 +40,7 @@ if(isset($_GET['code'])) {
                                 <th scope="col">Type</th>
                                 <th scope="col">Date-Time</th>
                                 <th scope="col">Percent Grade</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -60,6 +62,12 @@ if(isset($_GET['code'])) {
                                     <td>
                                         <?php echo $row_exams["percentgrade"] ?>
                                     </td>
+                                    <td>
+                                    <a href="Instructor_exam_update.php?pk=<?php echo $row_exams["pk"] ?>"><button type="button" class="btn btn-secondary">Update</button></a>
+                                    <form action="" method="POST" class="d-inline">
+                                        <button type="submit" name="delete_exam" value="<?= $row_exams["pk"]; ?>" class="btn btn-dark">Delete</button>
+                                    </form>
+                                    </td>
                                 </tr>
                             </tbody>
                             <?php
@@ -71,6 +79,38 @@ if(isset($_GET['code'])) {
                             ?>
                         </table>
                         <a href="Instructor_exam_create.php?code=<?php echo $courses_code ?>"><button style="float: right;" type="button" class="btn btn-dark">Add Exam</button></a>
+                        <?php 
+                            if(isset($_POST['delete_exam'])){
+                                
+                                $exams_pk = $_POST['delete_exam'];
+
+                                
+                                $sql_delete = "DELETE FROM exams WHERE pk = ?";
+                                
+                                
+                                $stmt = $conn->prepare($sql_delete);
+
+                                
+                                $stmt->bind_param("i", $exams_pk);
+                                
+                                if ($stmt->execute()) {
+                                    
+                                    ?>
+                                    <script>
+                                        swal({
+                                            title: "Success",
+                                            text: "You deleted the exam",
+                                            icon: "success",
+                                        }).then(function() {
+                                            window.location.href = 'Instructor_courses_details.php?code=<?php echo $courses_code ?>';
+                                        });
+                                    </script>
+                                    
+                                    <?php
+                                   
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

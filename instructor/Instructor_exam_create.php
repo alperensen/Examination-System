@@ -1,15 +1,6 @@
 <?php $page_name = "Exam Creation"; ?>
 <?php include 'layout/ins_header.php'; ?>
-<?php
-    if(isset($_GET['code'])) {
-        $courses_code = $_GET['code'];
-        $sql_courses = "SELECT courses.pk FROM courses WHERE courses.code = '$courses_code'";
-        $result_courses = $conn->query($sql_courses);
-        $row_courses = $result_courses->fetch_assoc(); 
-        $courseFk = $row_courses["pk"];
-        
-    }
-?>
+
         <div class="d-flex main-content" id="wrapper">
             <!-- Sidebar-->
             <?php include 'layout/ins_sidebar.php'; ?>
@@ -23,6 +14,18 @@
                     <br><br>
                     <div class="card examForm">
                         <div class="card-body">
+                        <?php
+                            if(isset($_GET['code'])) {
+                                $courses_code = $_GET['code'];
+                                $sql_courses = "SELECT courses.pk FROM courses WHERE courses.code = '$courses_code'";
+                                $result_courses = $conn->query($sql_courses);
+                                $row_courses = $result_courses->fetch_assoc(); 
+                                $courseFk = $row_courses["pk"];
+                                
+                            }
+                        ?>
+                            <a href="Instructor_courses_details.php?code=<?php echo $courses_code ?>"><button style="float: right;" type="button" class="btn btn-dark">Back</button></a>
+                            <h4 class="card-title">SAVE EXAM</h4>
                             <form action="" method="POST">
                                 <div class="mb-3">
                                     <label for="examType" class="form-label">Exam Type:<span class="text-danger">*</span></label>
@@ -44,11 +47,11 @@
                                     <input type="number" class="form-control" id="percentGrade" name="percentGrade" placeholder="Enter percent grade" min="0" max="100" required>
                                 </div>
                                 <div class="mb-3">
-                                    <button class="btn btn-dark" type="submit" style="float: right;">Save</button>
+                                    <button class="btn btn-dark" type="submit" name="save_exam" style="float: right;">Save</button>
                                 </div>
                             </form>
                             <?php 
-                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                            if (isset($_POST['save_exam'])) {
                                 $examType = isset($_POST['examType']) ? $_POST['examType'] : '';
                                 $examDateTime = isset($_POST['examDateTime']) ? $_POST['examDateTime'] : '';
                                 $percentGrade = isset($_POST['percentGrade']) ? $_POST['percentGrade'] : '';
@@ -63,9 +66,13 @@
                                             title: "Success",
                                             text: "You saved the exam",
                                             icon: "success",
+                                        }).then(function() {
+                                            window.location.href = 'Instructor_courses_details.php?code=<?php echo $courses_code ?>';
                                         });
                                     </script>
+                                    
                                     <?php
+                                    
                                 }
                             }
                             ?>
