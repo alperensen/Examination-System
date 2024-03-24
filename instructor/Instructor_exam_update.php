@@ -37,10 +37,9 @@ if(isset($_GET['pk'])) {
                                     <div class="mb-3">
                                         <label for="examType" class="form-label">Exam Type:<span class="text-danger">*</span></label>
                                         <select class="form-select" id="examType" name="update_examType" required>
-                                            <option value=""><?= $row['type'];?></option>
-                                            <option value="Project">Project</option>
-                                            <option value="Midterm">Midterm</option>
-                                            <option value="Final">Final</option>
+                                        <option <?= $row['type'] == 'Project' ? 'selected' : '' ?> value="Project">Project</option>
+                                        <option <?= $row['type'] == 'Midterm' ? 'selected' : '' ?> value="Midterm">Midterm</option>
+                                        <option <?= $row['type'] == 'Final' ? 'selected' : '' ?> value="Final">Final</option>
                                         </select>
                                     </div>
 
