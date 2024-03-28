@@ -93,7 +93,7 @@ if(isset($_GET['pk'])) {
                         
                         }
 
-                        function UpdateExam($examType, $examDateTime, $percentGrade, $exams_pk)
+                        function UpdateExam($examType, $examDateTime, $percentGrade, $instructorName, $currentDateTime, $exams_pk)
                         {
                             global $conn, $courses_code;
 
