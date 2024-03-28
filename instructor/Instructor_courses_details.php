@@ -75,6 +75,8 @@ if(isset($_GET['code'])) {
                                 }
                             } else {
                                 echo "<tr><td colspan='2'>No exams found</td></tr>";
+                                echo "<tr><td colspan='2'>No exams found</td></tr>";
+                                echo "<tr><td colspan='2'>No exams found</td></tr>";
                             }
                             ?>
                         </table>
