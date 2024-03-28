@@ -30,6 +30,81 @@ if(isset($_GET['pk'])) {
                         <a href="Instructor_courses_details.php?code=<?php echo $courses_code ?>"><button style="float: right;" type="button" class="btn btn-dark">Back</button></a>
                         <h4 class="card-title">EDIT EXAM</h4>
                         <?php
+                        $instructorName = $_SESSION['name'];
+                        date_default_timezone_set('Europe/Istanbul');
+                        $examTypeErr = $examDateTimeErr = $percentGradeErr = "";
+                        $currentDateTime = date("Y-m-d H:i:s");
+
+                        function test_input($data)
+                        {
+                            $data = trim($data);
+                            $data = stripslashes($data);
+                            $data = htmlspecialchars($data);
+                            return $data;
+                        }
+
+                        if (isset($_POST['update_exam'])) {
+
+                            if (empty($_POST['update_examType'])) {
+                                $examTypeErr = "Exam type is required";
+                            } else {
+                                $examType = test_input($_POST['update_examType']);
+                            }
+
+                            if (empty($_POST['update_examDateTime'])) {
+                                $examDateTimeErr = "Exam date is required";
+                            } else {
+                                $examDateTime = test_input($_POST['update_examDateTime']);
+                            }
+
+                            if (empty($_POST['update_percentGrade'])) {
+                                $percentGradeErr = "Percent grade is required";
+                            } else {
+                                $percentGrade = test_input($_POST['update_percentGrade']);
+                            }
+
+                            $exams_pk = isset($_GET['pk']) ? $_GET['pk'] : null;
+
+                            $sql_exam_type = "SELECT type FROM exams WHERE pk = ?";
+                            $stmt_exam_type = $conn->prepare($sql_exam_type);
+                            $stmt_exam_type->bind_param("i", $exams_pk);
+                            $stmt_exam_type->execute();
+                            $result_exam_type = $stmt_exam_type->get_result();
+                            $row_exam_type = $result_exam_type->fetch_assoc();
+                            $current_exam_type = $row_exam_type['type'];
+
+                            
+                            if ($current_exam_type == 'Midterm' || $current_exam_type == 'Project') {
+                                
+                                if ($examType == 'Final') {
+                                    ?>
+                                    <script>
+                                        swal({
+                                            title: "Error",
+                                            text: "A Final exam already exists",
+                                            icon: "error",
+                                        });
+                                    </script>
+                                    <?php
+                                }
+                            }
+                                
+                            UpdateExam($examType, $examDateTime, $percentGrade, $instructorName, $currentDateTime, $exams_pk);
+                        
+                        }
+
+                        function UpdateExam($examType, $examDateTime, $percentGrade, $exams_pk)
+                        {
+                            global $conn, $courses_code;
+
+                            
+                        }
+                        ?>
+
+
+
+
+                        <?php
                             if($result->num_rows >0){
                                 
                                 ?>
@@ -41,16 +116,19 @@ if(isset($_GET['pk'])) {
                                         <option <?= $row['type'] == 'Midterm' ? 'selected' : '' ?> value="Midterm">Midterm</option>
                                         <option <?= $row['type'] == 'Final' ? 'selected' : '' ?> value="Final">Final</option>
                                         </select>
+                                        <span class="text-danger"><?php echo $examTypeErr; ?></span>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="examDateTime" class="form-label">Date and Time:<span class="text-danger">*</span></label>
                                         <input type="datetime-local" class="form-control" value="<?= $row['date'];?>" id="examDateTime" name="update_examDateTime" required>
+                                        <span class="text-danger"><?php echo $examDateTimeErr; ?></span>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="percentGrade" class="form-label">Percent Grade:<span class="text-danger">*</span></label>
                                         <input type="number" class="form-control" value="<?= $row['percentgrade'];?>" id="percentGrade" name="update_percentGrade" placeholder="Enter percent grade" min="0" max="100" required>
+                                        <span class="text-danger"><?php echo $percentGradeErr; ?></span>
                                     </div>
                                     <div class="mb-3">
                                         <button class="btn btn-dark" type="submit" name="update_exam" style="float: right;">Update</button>
@@ -62,47 +140,6 @@ if(isset($_GET['pk'])) {
                             }
                         ?>
 
-                        <?php 
-                        if (isset($_POST['update_exam'])) {
-                            $examType = isset($_POST['update_examType']) ? $_POST['update_examType'] : '';
-                            $examDateTime = isset($_POST['update_examDateTime']) ? $_POST['update_examDateTime'] : '';
-                            $percentGrade = isset($_POST['update_percentGrade']) ? $_POST['update_percentGrade'] : '';
-                            
-                            $sql_update = "UPDATE exams SET type=?, date=?, percentgrade=? WHERE pk=?";
-
-                            
-                            $stmt = $conn->prepare($sql_update);
-
-                            
-                            $stmt->bind_param("sssi", $examType, $examDateTime, $percentGrade, $exams_pk);
-                            
-                            if ($stmt->execute()) {
-                                ?>
-                                <script>
-                                    swal({
-                                        title: "Success",
-                                        text: "You updated the exam",
-                                        icon: "success",
-                                    }).then(function() {
-                                            window.location.href = 'Instructor_courses_details.php?code=<?php echo $courses_code ?>';
-                                        });
-                                </script>
-                                <?php
-                            } else {
-                                ?>
-                                <script>
-                                    swal({
-                                        title: "Error",
-                                        text: "Failed to update the exam",
-                                        icon: "error",
-                                    });
-                                </script>
-                                <?php
-                                echo "Error: " . $stmt->error;
-                            }
-                        }
-                        ?>
-                           
                         </div>
                     </div>
                 </div>
