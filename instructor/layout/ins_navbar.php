@@ -6,12 +6,12 @@
             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
             
                 <li class="nav-item dropdown">
-                    <?php if(isset($_SESSION['name'])){?>
+                    <?php $instructorName =$_SESSION['name']; if(isset($instructorName)){?>
                         
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['name']?></a>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $instructorName?></a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 
-                                <a class="dropdown-item" href="#!"><i class="fa fa-user" aria-hidden="true" style="margin-right: 0.5rem;"></i>Profile</a>
+                                <a class="dropdown-item" href="Instructor_profile.php"><i class="fa fa-user" aria-hidden="true" style="margin-right: 0.5rem;"></i>Profile</a>
                                 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="../../logout.php"><i class="fas fa-sign-out-alt" style="margin-right: 0.5rem;"></i>Logout</a>

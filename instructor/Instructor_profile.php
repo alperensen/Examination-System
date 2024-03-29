@@ -2,7 +2,7 @@
 <?php include 'layout/ins_header.php'; ?>
 <?php
     $instructor_pk = $_SESSION['pk'];
-    $sql = "SELECT instructors.email FROM instructors WHERE instructors.pk = $instructor_pk";
+    $sql = "SELECT users.email FROM users WHERE users.pk = '$instructor_pk'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     $instructor_email = $row["email"];

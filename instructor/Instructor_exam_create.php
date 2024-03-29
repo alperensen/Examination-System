@@ -27,7 +27,7 @@
                         ?>
                         <?php
                         $examTypeErr = $examDateTimeErr = $percentGradeErr = "";
-
+                        $instructorName = $_SESSION['name'];
                         date_default_timezone_set('Europe/Istanbul');
                         $currentDateTime = date("Y-m-d H:i:s");
 
@@ -59,7 +59,7 @@
 
                             /*EXAM TYPE CONTROL */
                             if ($_POST['create_examType'] == 'Final') {
-                                $sql_check_final_exam = "SELECT exams.type FROM exams WHERE type = 'Final'";
+                                $sql_check_final_exam = "SELECT exams.type FROM exams WHERE type = 'Final' AND exams.courseFk = '$courseFk'";
                                 $result_check_final_exam = $conn->query($sql_check_final_exam);
 
                                 if ($result_check_final_exam && $result_check_final_exam->num_rows > 0) {
@@ -73,17 +73,17 @@
                                     </script>
                                     <?php
                                 } else {
-                                    saveExam($examDateTime, $examType, $percentGrade, $courseFk, $_SESSION['name'], $currentDateTime);
+                                    saveExam($examDateTime, $examType, $percentGrade, $courseFk, $instructorName, $currentDateTime);
                                 }
                             } else {
-                                saveExam($examDateTime, $examType, $percentGrade, $courseFk, $_SESSION['name'], $currentDateTime);
+                                saveExam($examDateTime, $examType, $percentGrade, $courseFk, $instructorName, $currentDateTime);
                             }
                         }
 
-                        function saveExam($examDateTime, $examType, $percentGrade, $courseFk, $updatedBy, $updatedDate) {
-                            global $conn, $courses_code;
+                        function saveExam($examDateTime, $examType, $percentGrade, $courseFk, $instructorName, $currentDateTime) {
+                            global $conn, $courses_code, $courseFk, $instructorName;
                             /*TOTAL PERCENT GRADE CONTROL*/
-                            $sql_sum_percentgrade = "SELECT SUM(percentgrade) AS total_percentgrade FROM exams";
+                            $sql_sum_percentgrade = "SELECT SUM(percentgrade) AS total_percentgrade FROM exams WHERE exams.courseFk = '$courseFk'";
                             $result_sum_percentgrade = $conn->query($sql_sum_percentgrade);
 
                             if ($result_sum_percentgrade) {
@@ -108,9 +108,11 @@
                                 </script>
                                 <?php
                             } else {
-                                $sql_insert = "INSERT INTO exams (date, type, percentgrade, courseFk, updatedBy, updatedDate) VALUES ('$examDateTime', '$examType', '$percentGrade', '$courseFk', '$updatedBy', '$updatedDate')";
 
-                                if ($conn->query($sql_insert) === TRUE) {
+                                $stmt_insert = $conn->prepare("INSERT INTO exams (date, type, percentgrade, courseFk, updatedBy, updatedDate) VALUES (?, ?, ?, ?, ?, ?)");
+                                $stmt_insert->bind_param("ssdiss", $examDateTime, $examType, $percentGrade, $courseFk, $instructorName, $currentDateTime);
+
+                                if ($stmt_insert->execute()) {
                                     ?>
                                     <script>
                                         swal({

@@ -9,7 +9,6 @@
   if (!$conn) {
     die("Could not connect to database: " . mysqli_connect_error());
   }
-
   $page_name = "Login"
 
 ?>
@@ -29,44 +28,49 @@
     </head>
     <body style="background-color: gray;">
     <?php
-      
-      if(isset($_POST['email']) && isset($_POST['password'])){
-      $status = "";
-      $email = $_POST['email'];
-      $password = md5($_POST['password']);
-      
+    
 
-      $email = mysqli_real_escape_string($conn, $email);
-      $password = mysqli_real_escape_string($conn, $password);
+    if(isset($_POST['login'])) { 
 
-      $query_instructors = "SELECT * FROM instructors WHERE email='$email' AND password='$password'";
-      $result_instructors = mysqli_query($conn, $query_instructors);
+        if(isset($_POST['email']) && isset($_POST['password'])) { 
 
-      $query_students = "SELECT * FROM students WHERE email='$email' AND password='$password'";
-      $result_students = mysqli_query($conn, $query_students);
+            $email = $_POST['email'];
+            $password = md5($_POST['password']); 
 
-      if (mysqli_num_rows($result_instructors) == 1) {
-        $row = mysqli_fetch_assoc($result_instructors);
-        $_SESSION['user_type'] = 'instructor';
-        $_SESSION['name'] = $row['name'];
-        $_SESSION['pk'] = $row['pk'];
-        header("Location: instructor/Instructor_home.php");
-        exit();
-      }
-      elseif (mysqli_num_rows($result_students) == 1) {
-        $row = mysqli_fetch_assoc($result_students);
-        $_SESSION['user_type'] = 'student';
-        $_SESSION['name'] = $row['name'];
-        $_SESSION['pk'] = $row['pk'];
-        header("Location: student/Student_home.php");
-        exit();
-      }else {
-        $status = "Login information is incorrect.";
-      } 
-      mysqli_close($conn);
+            
+            $email = mysqli_real_escape_string($conn, $email);
+            $password = mysqli_real_escape_string($conn, $password);
+
+            
+            $sql_instructors = "SELECT * FROM users WHERE email='$email' AND password='$password' AND role='instructor' AND active=1";
+            $result_instructors = mysqli_query($conn, $sql_instructors);
+
+            
+            $sql_students = "SELECT * FROM users WHERE email='$email' AND password='$password' AND role='student' AND active=1";
+            $result_students = mysqli_query($conn, $sql_students);
+
+            if(mysqli_num_rows($result_instructors) == 1) { 
+                $row = mysqli_fetch_assoc($result_instructors);
+                $_SESSION['name'] = $row['firstName'] . ' ' . $row['lastName']; 
+                $_SESSION['pk'] = $row['pk']; 
+                header("Location: instructor/Instructor_home.php"); 
+                exit();
+            }
+            elseif(mysqli_num_rows($result_students) == 1) { 
+                $row = mysqli_fetch_assoc($result_students);
+                $_SESSION['name'] = $row['firstName'] . ' ' . $row['lastName']; 
+                $_SESSION['pk'] = $row['pk']; 
+                header("Location: student/Student_home.php"); 
+                exit();
+            }
+            else {
+                $status = "Login information is incorrect.";
+            }
+        }
     }
-
+    mysqli_close($conn);
     ?>
+
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -96,7 +100,7 @@
                           
                                         <p class="small mb-4 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
                           
-                                        <button class="btn btn-outline-light btn-lg px-5 fw-bold" type="submit" name="submit">Login</button>
+                                        <button class="btn btn-outline-light btn-lg px-5 fw-bold" type="submit" name="login">Login</button>
                                         </form>
                                         
                           

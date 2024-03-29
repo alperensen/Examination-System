@@ -12,6 +12,7 @@ if(isset($_GET['pk'])) {
     $result_courses = $conn->query($sql_courses);
     $row_courses = $result_courses->fetch_assoc();
     $courses_code = $row_courses["code"];
+
 }
 ?>
         <div class="d-flex main-content" id="wrapper">
@@ -73,9 +74,8 @@ if(isset($_GET['pk'])) {
                             $row_exam_type = $result_exam_type->fetch_assoc();
                             $current_exam_type = $row_exam_type['type'];
 
-                            
                             if ($current_exam_type == 'Midterm' || $current_exam_type == 'Project') {
-                                
+
                                 if ($examType == 'Final') {
                                     ?>
                                     <script>
@@ -86,23 +86,81 @@ if(isset($_GET['pk'])) {
                                         });
                                     </script>
                                     <?php
+                                } else {
+                                    UpdateExam($examDateTime, $examType, $percentGrade, $instructorName, $currentDateTime);
                                 }
+
+                            } else if ($current_exam_type == 'Final') {
+
+                                UpdateExam($examDateTime, $examType, $percentGrade, $instructorName, $currentDateTime);
                             }
-                                
-                            UpdateExam($examType, $examDateTime, $percentGrade, $instructorName, $currentDateTime, $exams_pk);
-                        
+
                         }
 
-                        function UpdateExam($examType, $examDateTime, $percentGrade, $instructorName, $currentDateTime, $exams_pk)
+                        function UpdateExam($examDateTime, $examType, $percentGrade, $instructorName, $currentDateTime)
                         {
-                            global $conn, $courses_code;
+                            global $conn, $courses_code, $courseFk, $exams_pk;
 
+                            $sql_sum_percentgrade = "SELECT SUM(percentgrade) AS total_percentgrade FROM exams WHERE exams.courseFk = '$courseFk'";
+                            $stmt_sum_percentgrade = $conn->prepare($sql_sum_percentgrade);
+                            $stmt_sum_percentgrade->execute();
+                            $result_sum_percentgrade = $stmt_sum_percentgrade->get_result();
+
+
+                            if ($result_sum_percentgrade) {
+                                $row_sum_percentgrade = $result_sum_percentgrade->fetch_assoc();
+                                $total_percentgrade = $row_sum_percentgrade['total_percentgrade'];
+                            } else {
+                                $total_percentgrade = 0;
+                            }
+
+                            $total_with_user_grade = $total_percentgrade + $percentGrade;
+
+                            if ($total_with_user_grade > 100) {
+                                $total_possible_grade = 100 - $total_percentgrade;
+                                ?>
+                                <script>
+                                    swal({
+                                        title: "Total percent grade for this course: <?php echo $total_percentgrade; ?>",
+                                        text: "You can assign at most <?php echo $total_possible_grade; ?> percent grade for this exam.",
+                                        icon: "error",
+                                    });
+                                </script>
+                                <?php
+                            } else {
+                                
+                                $sql_update = "UPDATE exams SET date=?, type=?, percentgrade=?, updatedBy=?, updatedDate=? WHERE pk=?";
+                                $stmt = $conn->prepare($sql_update);
+                                $stmt->bind_param("ssdssi", $examDateTime, $examType, $percentGrade, $instructorName, $currentDateTime, $exams_pk);
+                            
+                                if ($stmt->execute()) {
+                                    ?>
+                                    <script>
+                                        swal({
+                                            title: "Success",
+                                            text: "You updated the exam",
+                                            icon: "success",
+                                        }).then(function () {
+                                            window.location.href = 'Instructor_courses_details.php?code=<?php echo $courses_code ?>';
+                                        });
+                                    </script>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <script>
+                                        swal({
+                                            title: "Error",
+                                            text: "Failed to update the exam",
+                                            icon: "error",
+                                        });
+                                    </script>
+                                    <?php
+                                    echo "Error: " . $stmt->error;
+                                }
+                            }
                             
                         }
                         ?>
-
-
-
 
                         <?php
                             if($result->num_rows >0){

@@ -7,11 +7,14 @@ if(isset($_GET['code'])) {
     $result_courses = $conn->query($sql_courses);
     $row_courses = $result_courses->fetch_assoc(); 
     $courses_pk = $row_courses["pk"];
+    $courses_code = $row_courses["code"];
+    $courses_name = $row_courses["name"];
 
     $sql_exams = "SELECT exams.pk, exams.date, exams.type, exams.percentgrade FROM exams WHERE exams.courseFk = '$courses_pk'";
     $result_exams = $conn->query($sql_exams);
     
 }
+$instructorName = $_SESSION['name'];
 ?>
         <div class="d-flex main-content" id="wrapper">
             <!-- Sidebar-->
@@ -22,12 +25,13 @@ if(isset($_GET['code'])) {
                 <?php include 'layout/ins_navbar.php'; ?>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <span class="baslik"><?php echo $row_courses["name"] ?></span>
+                    <a href="Instructor_courses.php" class="btn btn-dark" style="margin-top: 0.3rem;"><i class="fa-solid fa-arrow-left"></i></a><br>
+                    <span class="baslik"><?php echo $courses_name ?></span>
                     <br><br>
                     <div class="card course-details">
                         <div class="card-body">
                             <p class="card-text">Course Code: <?php echo $courses_code ?></p>
-                            <p class="card-text">Instructor Name: <?php echo $_SESSION['name'] ?></p>
+                            <p class="card-text">Instructor Name: <?php echo $instructorName ?></p>
                         </div>
                     </div>
                     <br>
@@ -86,7 +90,6 @@ if(isset($_GET['code'])) {
                                 
                                 $exams_pk = $_POST['delete_exam'];
 
-                                
                                 $sql_delete = "DELETE FROM exams WHERE pk = ?";
                                 
                                 
