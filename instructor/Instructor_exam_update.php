@@ -7,6 +7,7 @@ if(isset($_GET['pk'])) {
     $result = $conn->query($sql);
     $row = $result->fetch_assoc(); 
     $courseFk = $row["courseFk"];
+    $exam_percentgrade = $row["percentgrade"];
 
     $sql_courses = "SELECT courses.code FROM courses WHERE courses.pk = '$courseFk'";
     $result_courses = $conn->query($sql_courses);
@@ -99,12 +100,13 @@ if(isset($_GET['pk'])) {
 
                         function UpdateExam($examDateTime, $examType, $percentGrade, $instructorName, $currentDateTime)
                         {
-                            global $conn, $courses_code, $courseFk, $exams_pk;
+                            global $conn, $courses_code, $courseFk, $exams_pk, $exam_percentgrade;
 
-                            $sql_sum_percentgrade = "SELECT SUM(percentgrade) AS total_percentgrade FROM exams WHERE exams.courseFk = '$courseFk'";
+                            $sql_sum_percentgrade = "SELECT exams.percentgrade, SUM(percentgrade) AS total_percentgrade FROM exams WHERE exams.courseFk = '$courseFk'";
                             $stmt_sum_percentgrade = $conn->prepare($sql_sum_percentgrade);
                             $stmt_sum_percentgrade->execute();
                             $result_sum_percentgrade = $stmt_sum_percentgrade->get_result();
+                            
 
 
                             if ($result_sum_percentgrade) {
@@ -114,20 +116,25 @@ if(isset($_GET['pk'])) {
                                 $total_percentgrade = 0;
                             }
 
-                            $total_with_user_grade = $total_percentgrade + $percentGrade;
+                            $new_percentGrade = $_POST['update_percentGrade']; 
 
-                            if ($total_with_user_grade > 100) {
-                                $total_possible_grade = 100 - $total_percentgrade;
+                            
+                            $current_percentGrade = $exam_percentgrade;
+                            $total_without_current_grade = $total_percentgrade - $current_percentGrade;
+
+                            
+                            $total_with_new_grade = $total_without_current_grade + $new_percentGrade;
+
+                            if ($total_with_new_grade > 100) {
                                 ?>
                                 <script>
                                     swal({
                                         title: "Total percent grade for this course: <?php echo $total_percentgrade; ?>",
-                                        text: "You can assign at most <?php echo $total_possible_grade; ?> percent grade for this exam.",
                                         icon: "error",
                                     });
                                 </script>
                                 <?php
-                            } else {
+                            } else{ 
                                 
                                 $sql_update = "UPDATE exams SET date=?, type=?, percentgrade=?, updatedBy=?, updatedDate=? WHERE pk=?";
                                 $stmt = $conn->prepare($sql_update);
