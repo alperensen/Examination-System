@@ -11,7 +11,7 @@
   }
   
 ?>
-
+<!--HEADER-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,5 +29,7 @@
         <!-- Core theme JS-->
         <script src="../../js/scripts.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="../../js/jquery-3.7.1.min.js"></script>
+        <script src="../../js/custom.js"></script>
     </head>
     <body>

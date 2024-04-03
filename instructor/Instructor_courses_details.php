@@ -1,5 +1,6 @@
 <?php $page_name = "Course Details"; ?>
 <?php include 'layout/ins_header.php'; ?>
+<!-- GETTING VALUES AT COURSES TABLE AND EXAMS TABLE-->
 <?php 
 if(isset($_GET['code'])) {
     $courses_code = $_GET['code'];
@@ -30,13 +31,13 @@ $instructorName = $_SESSION['name'];
                     <br><br>
                     <div class="card course-details">
                         <div class="card-body">
-                            <p class="card-text">Course Code: <?php echo $courses_code ?></p>
+                            <p class="card-text" style="padding-bottom: 0.8rem;">Course Code: <?php echo $courses_code ?></p>
                             <p class="card-text">Instructor Name: <?php echo $instructorName ?></p>
                         </div>
                     </div>
                     <br>
                     <span class="baslik">LIST OF EXAMS</span>
-                    <div class="table-responsive-md" style="max-width: 50rem;margin-left: 2%;margin-top: 2rem;">
+                    <div id="exams_table" class="table-responsive-md" style="margin-top: 2rem;margin-left: auto;margin-right: auto;">
                         <table class="table table-striped">
                             <thead class="table-dark">
                             <tr>
@@ -48,6 +49,7 @@ $instructorName = $_SESSION['name'];
                             </tr>
                             </thead>
                             <tbody>
+                                <!--SHOWING TABLE-->
                             <?php
                             $var = 1;
                             if ($result_exams->num_rows > 0) {
@@ -69,7 +71,7 @@ $instructorName = $_SESSION['name'];
                                     <td>
                                     <a href="Instructor_exam_update.php?pk=<?php echo $row_exams["pk"] ?>"><button type="button" class="btn btn-secondary">Update</button></a>
                                     <form action="" method="POST" class="d-inline">
-                                        <button type="submit" name="delete_exam" value="<?= $row_exams["pk"]; ?>" class="btn btn-dark">Delete</button>
+                                        <button type="buton" value="<?= $row_exams["pk"]; ?>" class="btn btn-dark delete_exam">Delete</button>
                                     </form>
                                     </td>
                                 </tr>
@@ -85,38 +87,6 @@ $instructorName = $_SESSION['name'];
                             ?>
                         </table>
                         <a href="Instructor_exam_create.php?code=<?php echo $courses_code ?>"><button style="float: right;" type="button" class="btn btn-dark">Add Exam</button></a>
-                        <?php 
-                            if(isset($_POST['delete_exam'])){
-                                
-                                $exams_pk = $_POST['delete_exam'];
-
-                                $sql_delete = "DELETE FROM exams WHERE pk = ?";
-                                
-                                
-                                $stmt = $conn->prepare($sql_delete);
-
-                                
-                                $stmt->bind_param("i", $exams_pk);
-                                
-                                if ($stmt->execute()) {
-                                    
-                                    ?>
-                                    <script>
-                                        swal({
-                                            title: "Success",
-                                            text: "You deleted the exam",
-                                            icon: "success",
-                                        }).then(function() {
-                                            window.location.href = 'Instructor_courses_details.php?code=<?php echo $courses_code ?>';
-                                        });
-                                    </script>
-                                    
-                                    <?php
-                                   
-                                }
-                            }
-                        ?>
-                    </div>
                 </div>
             </div>
         </div>

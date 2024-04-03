@@ -19,15 +19,19 @@
 }
 .course-details{
     max-width: 30rem;
-    margin-left: 2%;
+    min-height: 8rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    
 }
 .course-details p{
     font-weight: bold;
 }
 .examForm{
-        max-width: 50rem;
+        /*max-width: 50rem;*/
         margin: 0 auto;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

@@ -44,7 +44,7 @@ if(isset($_GET['pk'])) {
                             $data = htmlspecialchars($data);
                             return $data;
                         }
-
+                        /*UPDATE OPERATION*/ 
                         if (isset($_POST['update_exam'])) {
 
                             if (empty($_POST['update_examType'])) {
@@ -74,10 +74,14 @@ if(isset($_GET['pk'])) {
                             $result_exam_type = $stmt_exam_type->get_result();
                             $row_exam_type = $result_exam_type->fetch_assoc();
                             $current_exam_type = $row_exam_type['type'];
+                            /*CHECK FINAL TYPE*/ 
+                            if ($examType == 'Final') {
+                                
+                                $sql_check_final = "SELECT * FROM exams WHERE type = 'Final'";
+                                $result_check_final = $conn->query($sql_check_final);
 
-                            if ($current_exam_type == 'Midterm' || $current_exam_type == 'Project') {
-
-                                if ($examType == 'Final') {
+                                if ($result_check_final->num_rows > 0) {
+                                    
                                     ?>
                                     <script>
                                         swal({
@@ -88,16 +92,16 @@ if(isset($_GET['pk'])) {
                                     </script>
                                     <?php
                                 } else {
+                                    
                                     UpdateExam($examDateTime, $examType, $percentGrade, $instructorName, $currentDateTime);
                                 }
-
-                            } else if ($current_exam_type == 'Final') {
-
+                            } else {
+                                
                                 UpdateExam($examDateTime, $examType, $percentGrade, $instructorName, $currentDateTime);
                             }
 
                         }
-
+                        /* UPDATE EXAM FUNCTION */
                         function UpdateExam($examDateTime, $examType, $percentGrade, $instructorName, $currentDateTime)
                         {
                             global $conn, $courses_code, $courseFk, $exams_pk, $exam_percentgrade;
@@ -173,6 +177,7 @@ if(isset($_GET['pk'])) {
                             if($result->num_rows >0){
                                 
                                 ?>
+                                <!--FORM CONTEXT-->
                                 <form action="" method="POST">
                                     <div class="mb-3">
                                         <label for="examType" class="form-label">Exam Type:<span class="text-danger">*</span></label>

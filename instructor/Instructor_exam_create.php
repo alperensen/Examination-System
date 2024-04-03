@@ -12,6 +12,7 @@
                 <div class="container-fluid">
                     <span class="baslik">EXAM CREATION</span>
                     <br><br>
+                    <!--EXAMFORM-->
                     <div class="card examForm">
                         <div class="card-body">
                         <?php
@@ -37,7 +38,7 @@
                             $data = htmlspecialchars($data);
                             return $data;
                         }
-
+                        /*CREATE OPERATION*/
                         if (isset($_POST['save_exam'])) {
                             if (empty($_POST['create_examType'])) {
                                 $examTypeErr = "Exam type is required";
@@ -79,7 +80,7 @@
                                 saveExam($examDateTime, $examType, $percentGrade, $courseFk, $instructorName, $currentDateTime);
                             }
                         }
-
+                        /* SAVE EXAM FUNCTION */
                         function saveExam($examDateTime, $examType, $percentGrade, $courseFk, $instructorName, $currentDateTime) {
                             global $conn, $courses_code, $courseFk, $instructorName;
                             /*TOTAL PERCENT GRADE CONTROL*/
@@ -129,7 +130,7 @@
                         }
                         ?>
 
-
+                            <!--FORM CONTEXT-->
                             <a href="Instructor_courses_details.php?code=<?php echo $courses_code ?>"><button style="float: right;" type="button" class="btn btn-dark">Back</button></a>
                             <h4 class="card-title">SAVE EXAM</h4>
                             <form action="" method="POST">

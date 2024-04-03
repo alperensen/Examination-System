@@ -12,8 +12,9 @@
                 <div class="container-fluid">
                     <span class="baslik">MY COURSES</span>
                     <br><br>    
+                    <!--COURSES TABLE-->
                     <div class="table-responsive-md">
-                        <table class="table table-striped table-hover" style="max-width: 60rem;margin-left: 2%;">
+                        <table class="table table-striped table-hover" style="margin-left: auto;margin-right: auto;">
                             <thead class="table-dark">
                             <tr>
                                 <th scope="col">#</th>
@@ -22,7 +23,7 @@
                                 
                             </tr>
                             </thead>
-                            
+                            <!--SHOWING COURSES TABLE-->
                             <?php
                             $instructor_pk = $_SESSION['pk'];
                             $var = 1;

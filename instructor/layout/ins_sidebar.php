@@ -1,3 +1,4 @@
+<!--SIDE BAR-->
 <div class="bg-dark" id="sidebar-wrapper">
     <div class="sidebar-heading bg-dark text-white ps-3">Exam System</div>
     <div class="list-group list-group-flush">

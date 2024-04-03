@@ -28,14 +28,28 @@
     </head>
     <body style="background-color: gray;">
     <?php
-    
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 
     if(isset($_POST['login'])) { 
 
         if(isset($_POST['email']) && isset($_POST['password'])) { 
 
-            $email = $_POST['email'];
-            $password = md5($_POST['password']); 
+            if (empty($_POST["email"])) {
+                $emailErr = "E-mail is required";
+              } else {
+                $email = test_input($_POST["email"]);
+              }
+            
+            if (empty($_POST["password"])) {
+            $passwordErr = "Paswword is required";
+            } else {
+            $password = md5(test_input($_POST["password"]));
+            }
 
             
             $email = mysqli_real_escape_string($conn, $email);
@@ -87,14 +101,14 @@
                                         <p class="text-white-50 mb-5">Please enter your email and password!</p>
                                         <form action="" method="POST">
                                         <div class="mb-4">
-                                          <label class="form-label" for="email">Email</label>
-                                          <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="example@gmail.com" />
+                                          <label class="form-label" for="email">Email:<span class="text-danger">*</span></label>
+                                          <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="example@gmail.com" required/>
                                           
                                         </div>
                           
                                         <div class="mb-3">
-                                          <label class="form-label" for="password">Password</label>
-                                          <input type="password" name="password" id="password" class="form-control form-control-lg" />
+                                          <label class="form-label" for="password">Password:<span class="text-danger">*</span></label>
+                                          <input type="password" name="password" id="password" class="form-control form-control-lg" required/>
                                           
                                         </div>
                           
