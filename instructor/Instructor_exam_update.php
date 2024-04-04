@@ -74,30 +74,32 @@ if(isset($_GET['pk'])) {
                             $result_exam_type = $stmt_exam_type->get_result();
                             $row_exam_type = $result_exam_type->fetch_assoc();
                             $current_exam_type = $row_exam_type['type'];
-                            /*CHECK FINAL TYPE*/ 
-                            if ($examType == 'Final') {
-                                
-                                $sql_check_final = "SELECT * FROM exams WHERE type = 'Final'";
-                                $result_check_final = $conn->query($sql_check_final);
 
-                                if ($result_check_final->num_rows > 0) {
-                                    
-                                    ?>
-                                    <script>
-                                        swal({
-                                            title: "Error",
-                                            text: "A Final exam already exists",
-                                            icon: "error",
-                                        });
-                                    </script>
-                                    <?php
-                                } else {
-                                    
-                                    UpdateExam($examDateTime, $examType, $percentGrade, $instructorName, $currentDateTime);
-                                }
+                            /*CHECK FINAL TYPE*/ 
+                            if ($current_exam_type == 'Final') {
+                                UpdateExam($examDateTime, $examType, $percentGrade, $instructorName, $currentDateTime);
                             } else {
                                 
-                                UpdateExam($examDateTime, $examType, $percentGrade, $instructorName, $currentDateTime);
+                                if ($examType == 'Final') {
+                                    $sql_check_final = "SELECT * FROM exams WHERE type = 'Final'";
+                                    $result_check_final = $conn->query($sql_check_final);
+
+                                    if ($result_check_final->num_rows > 0) {
+                                        ?>
+                                        <script>
+                                            swal({
+                                                title: "Error",
+                                                text: "A Final exam already exists",
+                                                icon: "error",
+                                            });
+                                        </script>
+                                        <?php
+                                    } else {
+                                        UpdateExam($examDateTime, $examType, $percentGrade, $instructorName, $currentDateTime);
+                                    }
+                                } else {
+                                    UpdateExam($examDateTime, $examType, $percentGrade, $instructorName, $currentDateTime);
+                                }
                             }
 
                         }
