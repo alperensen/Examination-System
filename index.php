@@ -37,12 +37,12 @@
 
     if(isset($_POST['login'])) { 
 
-        if(isset($_POST['email']) && isset($_POST['password'])) { 
+        if(isset($_POST['username']) && isset($_POST['password'])) { 
 
-            if (empty($_POST["email"])) {
-                $emailErr = "E-mail is required";
+            if (empty($_POST["username"])) {
+                $usernameErr = "Username is required";
               } else {
-                $email = test_input($_POST["email"]);
+                $username = test_input($_POST["username"]);
               }
             
             if (empty($_POST["password"])) {
@@ -56,17 +56,17 @@
             $password = mysqli_real_escape_string($conn, $password);
 
             
-            $sql_instructors = "SELECT * FROM users WHERE email='$email' AND password='$password' AND role='instructor' AND active=1";
+            $sql_instructors = "SELECT * FROM users WHERE username='$username' AND password='$password' AND role='instructor' AND active=1";
             $result_instructors = mysqli_query($conn, $sql_instructors);
 
             
-            $sql_students = "SELECT * FROM users WHERE email='$email' AND password='$password' AND role='student' AND active=1";
+            $sql_students = "SELECT * FROM users WHERE username='$username' AND password='$password' AND role='student' AND active=1";
             $result_students = mysqli_query($conn, $sql_students);
 
             if(mysqli_num_rows($result_instructors) == 1) { 
                 $row = mysqli_fetch_assoc($result_instructors);
                 $_SESSION['name'] = $row['firstName'] . ' ' . $row['lastName']; 
-                $_SESSION['pk'] = $row['pk']; 
+                $_SESSION['pk'] = $row['pk'];
                 header("Location: instructor/Instructor_home.php"); 
                 exit();
             }
@@ -98,11 +98,11 @@
                                         <img  class="mb-3" id="login_logo" src="assets/Akdeniz_university_logo.png" style="margin-left: auto;margin-right: auto;" alt="logo" width="120px" height="120px">
                         
                                         <h2 class="fw-bold mb-2">Login</h2>
-                                        <p class="text-white-50 mb-5">Please enter your email and password!</p>
+                                        <p class="text-white-50 mb-5">Please enter your username and password!</p>
                                         <form action="" method="POST">
                                         <div class="mb-4">
-                                          <label class="form-label" for="email">Email:<span class="text-danger">*</span></label>
-                                          <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="example@gmail.com" required/>
+                                          <label class="form-label" for="username">Username:<span class="text-danger">*</span></label>
+                                          <input type="text" name="username" id="username" class="form-control form-control-lg" required/>
                                           
                                         </div>
                           

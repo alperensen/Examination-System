@@ -1,12 +1,6 @@
 <?php $page_name = "Profile"; ?>
 <?php include 'layout/ins_header.php'; ?>
-<?php
-    $instructor_pk = $_SESSION['pk'];
-    $sql = "SELECT users.email FROM users WHERE users.pk = '$instructor_pk'";
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-    $instructor_email = $row["email"];
-?>
+
         <div class="d-flex main-content" id="wrapper">
             <!-- Sidebar-->
             <?php include 'layout/ins_sidebar.php'; ?>
@@ -20,7 +14,8 @@
                     <div class="container bg-white">
                         <div class="row">
                             <div class="col-md-3">
-                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"><?= $_SESSION['name']?></span><span class="text-black-50"><?= $instructor_email ?></span><span> </span></div>
+                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"><?= $_SESSION['name']?></span></div>
+                            
                             </div>
                             <div class="col-md-5">
                                 <div class="p-3 py-5">

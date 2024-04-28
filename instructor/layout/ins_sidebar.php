@@ -6,6 +6,7 @@
         <br>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Instructor_home.php"><i class="fa-solid fa-house" style="margin-right: 0.5rem;"></i>Dashboard</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Instructor_courses.php"><i class="fa-solid fa-book" style="margin-right: 0.5rem;"></i>My Courses</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Instructor_add_student.php"><i class="fa-solid fa-plus" style="margin-right: 0.5rem;"></i>Add Student</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"><i class="fa-solid fa-message" style="margin-right: 0.5rem;"></i>Contact</a>
         
     </div>
