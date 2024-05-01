@@ -94,10 +94,10 @@
                                 $student_insert_users->bind_param("ssssssssss", $username, $password, $email, $fName, $lName, $dob, $active, $role, $instructorName, $currentDateTime);
 
                                 if ($student_insert_users->execute()) {
-                                    $user_id = $conn->insert_id;
+                                    $userFK = $conn->insert_id;
 
                                     $student_insert_students = $conn->prepare("INSERT INTO students (userFk, updatedBy, updatedDate) VALUES (?, ?, ?)");
-                                    $student_insert_students->bind_param("iss", $user_id, $instructorName, $currentDateTime);
+                                    $student_insert_students->bind_param("iss", $userFK, $instructorName, $currentDateTime);
 
                                     if ($student_insert_students->execute()) {
                                         ?>

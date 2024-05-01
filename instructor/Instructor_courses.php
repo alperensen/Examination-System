@@ -25,7 +25,17 @@
                             </thead>
                             <!--SHOWING COURSES TABLE-->
                             <?php
-                            $instructor_pk = $_SESSION['pk'];
+
+                            $instructor_user_pk = $_SESSION['pk'];
+                            $sql_instructor = "SELECT pk FROM instructors WHERE userFk = ?";
+                            $stmt_instructor = $conn->prepare($sql_instructor);
+                            $stmt_instructor->bind_param("i", $instructor_user_pk);
+                            $stmt_instructor->execute();
+                            $result_instructor = $stmt_instructor->get_result();
+
+                            $row_instructor = $result_instructor->fetch_assoc();
+                            $instructor_pk = $row_instructor['pk'];
+
                             $var = 1;
                             $sql = "SELECT courses.pk, courses.name, courses.code FROM courses WHERE courses.instructorFk = $instructor_pk";
                             $result = $conn->query($sql);
