@@ -19,7 +19,7 @@ include 'layout/st_header.php';
             
             $user_pk = $_SESSION['pk'];
 
-            
+            /*SQL QUERY FOR STUDENTS COURSES*/
             $sql_courses = "SELECT courses.name, courses.code, instructors.pk as instructor_pk, users.firstName, users.lastName 
                             FROM courses 
                             INNER JOIN course_student ON courses.pk = course_student.courseFk

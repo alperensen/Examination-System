@@ -39,8 +39,6 @@
                     $row_instructor = $result_instructor->fetch_assoc();
                     $instructor_pk = $row_instructor['pk'];
                     
-                    $query_students = "SELECT students.pk, users.firstName, users.lastName FROM students JOIN users ON students.userFk = users.pk";
-                    $result_students = $conn->query($query_students);
 
                     $query_courses = "SELECT * FROM courses WHERE courses.instructorFk = ?";
                     $stmt = $conn->prepare($query_courses);
@@ -92,20 +90,13 @@
                         }
                     }
                     ?>
-
                     <!-- FORM CONTEXT -->
                     <h4 class="card-title">ADD COURSE FORM</h4>
                     <form action="" method="POST">
                         <div class="mb-3">
                             <label for="studentName" class="form-label">Student Name:<span class="text-danger">*</span></label>
-                            <select class="form-select" id="student_name" name="student_name" required>
-                                <option value="">Select Student</option>
-                                <?php 
-                                while($row = $result_students->fetch_assoc()) {
-                                    echo "<option value='".$row['pk']."'>".$row['firstName']." ".$row['lastName']."</option>";
-                                }
-                                ?>
-                            </select>
+                            <input type="text" name="student_name" id="studentName" class="form-control input-lg" autocomplete="off" placeholder="Student Name" />
+                            <input type="hidden" name="student_pk" id="studentPk" />
                             <span class="text-danger"><?php echo $studentNameErr; ?></span>
                         </div>
                         <div class="mb-3">
@@ -128,4 +119,35 @@
         </div>
     </div>
 </div>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- jQuery UI -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#studentName").autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: "get_students.php",
+                dataType: "json",
+                data: {
+                    term: request.term
+                },
+                success: function(data) {
+                    response(data);
+                }
+            });
+        },
+        minLength: 0,
+        select: function(event, ui) {
+            
+            $('#studentPk').val(ui.item.value);
+        }
+    }).focus(function() {
+        $(this).autocomplete("search", ""); 
+    });
+});
+
+</script>
 <?php include 'layout/ins_footer.php'; ?>
