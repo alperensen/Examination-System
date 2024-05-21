@@ -1,0 +1,46 @@
+.main-content{
+    background-color: #e9e9e9;
+}
+
+.baslik{
+    color: gray;
+    text-shadow: 2px 2px 6px lightgrey;
+    margin-left: 0.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+}
+.code-design{
+    text-decoration: none;
+    color: black;
+}
+.code-design:hover{
+    color: white;
+    
+}
+.course-details{
+    max-width: 30rem;
+    min-height: 8rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    
+}
+.course-details p{
+    font-weight: bold;
+}
+.examForm{
+        /*max-width: 50rem;*/
+        margin: 0 auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+}
+.labels {
+    font-size: 14px;
+}
+.card-body label{
+    font-weight: bold;
+}
+
